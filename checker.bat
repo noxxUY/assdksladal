@@ -17,16 +17,6 @@ echo.
 echo.  
 
 echo  ============================
-echo.        [Disk Drive:]
-echo  ============================
-echo.
-wmic diskdrive get serialnumber
-echo.
-vol C: | findstr /R "Volume Serial Number"
-vol D: | findstr /R "Volume Serial Number"
-echo. 
-
-echo  ============================
 echo.      [Motherboard:]
 echo  ============================
 echo.
@@ -39,22 +29,6 @@ echo  ============================
 echo.
 wmic path win32_computersystemproduct get uuid
 echo. 
-
-echo  ============================
-echo.       ‎  [GPU:]
-echo  ============================
-echo.
-wmic path Win32_VideoController GET Description
-wmic path Win32_VideoController GET PNPDeviceID
-nvidia-smi -L
-echo.
-
-echo  ============================
-echo.         [RAM:]
-echo  ============================
-echo.
-wmic memorychip get serialnumber
-echo.
 
 echo  ============================
 echo.         [Bios:]
