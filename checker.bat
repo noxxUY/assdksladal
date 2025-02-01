@@ -45,6 +45,13 @@ wmic cpu get processorid
 wmic cpu get serialnumber
 echo.
 
+echo  ============================
+echo.         [MAC:]
+echo  ============================
+echo.
+getmac
+echo.
+
 echo Press any key to get your hardware serials again.
 pause >nul
 goto start
