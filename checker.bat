@@ -1,5 +1,5 @@
 @echo off
-title "Inimu Serial Checker (by noxx)"
+title "Inimu Serial Checker | RECODE!"
 color 70
 echo.
 :start
