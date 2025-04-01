@@ -2,6 +2,11 @@
 title "Inimu | Arp Fix (by noxx)"
 >nul 2>&1
 
+
+net stop winmgmt /y
+net start winmgmt /y
+sc stop winmgmt
+sc start winmgmt
 netsh interface ipv6 set teredo disable >nul 2>&1
 netsh interface ipv6 set global randomizeidentifiers=disabled >nul 2>&1
 netsh interface ipv6 set global state=disabled >nul 2>&1
